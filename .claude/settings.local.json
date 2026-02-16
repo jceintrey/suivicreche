@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(wsl -e ls:*)",
+      "Bash(dir:*)",
+      "Bash(npm create:*)",
+      "Bash(wsl -e bash -c \"cd /home/jceintrey/projects/suivicreche && which npm && which node && node --version && npm --version\":*)",
+      "Bash(wsl -e bash -lc:*)",
+      "Bash(where:*)",
+      "Bash(node --version:*)",
+      "Bash(npm --version:*)",
+      "Bash(wsl -d Debian -- bash -c \"curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash\")",
+      "Bash(wsl -d Debian -- bash -lc:*)",
+      "Bash(wsl:*)",
+      "Bash(npm install:*)",
+      "Bash(bash -ic \"which node; which npm; node --version\")",
+      "Bash(wsl.exe -d Debian -- bash -lc:*)",
+      "Bash(wsl.exe:*)"
+    ]
+  }
+}
