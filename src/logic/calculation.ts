@@ -1,7 +1,7 @@
-import { WeeklySchedule, SelectedDays } from '../types';
+import { WeeklySchedule, SelectedDays, DayOverrides } from '../types';
 
 /** Convertit "HH:MM" en nombre d'heures decimales */
-function timeToHours(time: string): number {
+export function timeToHours(time: string): number {
   const [h, m] = time.split(':').map(Number);
   return h + m / 60;
 }
@@ -32,7 +32,8 @@ export function calculateMonth(
   month: number,
   selectedDays: SelectedDays,
   schedule: WeeklySchedule,
-  hourlyRate: number
+  hourlyRate: number,
+  dayOverrides: DayOverrides = {}
 ): MonthSummary {
   let totalDays = 0;
   let totalHours = 0;
@@ -43,7 +44,12 @@ export function calculateMonth(
     const key = `${year}-${String(month + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
     if (selectedDays[key]) {
       totalDays++;
-      totalHours += hoursForDay(getDayOfWeek(key), schedule);
+      const override = dayOverrides[key];
+      if (override) {
+        totalHours += Math.max(0, timeToHours(override.end) - timeToHours(override.start));
+      } else {
+        totalHours += hoursForDay(getDayOfWeek(key), schedule);
+      }
     }
   }
 

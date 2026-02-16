@@ -109,6 +109,7 @@ body {
   cursor: pointer;
   transition: background 0.15s, color 0.15s;
   user-select: none;
+  position: relative;
 }
 
 .calendar-cell:hover {
@@ -264,4 +265,363 @@ body {
 
 .timeslot-sep {
   color: #aaa;
+}
+
+/* Override indicator */
+.calendar-cell.has-override {
+  border: 2px solid #f0a030;
+}
+
+.override-dot {
+  position: absolute;
+  bottom: 3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #f0a030;
+}
+
+.calendar-cell.selected .override-dot {
+  background: #fff;
+}
+
+/* Day Detail Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 100;
+  animation: fadeIn 0.15s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.day-detail-modal {
+  background: #fff;
+  border-radius: 16px 16px 0 0;
+  width: 100%;
+  max-width: 480px;
+  padding: 20px 16px;
+  animation: slideUp 0.2s ease;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.modal-header h3 {
+  font-size: 1rem;
+  text-transform: capitalize;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: #999;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.modal-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.modal-toggle input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #4a90d9;
+}
+
+.modal-default-schedule {
+  font-size: 0.85rem;
+  color: #888;
+  padding: 4px 0;
+}
+
+.modal-time-inputs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0;
+}
+
+.modal-time-inputs input[type="time"] {
+  padding: 6px 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+.modal-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.modal-btn {
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.modal-btn.primary {
+  background: #4a90d9;
+  color: #fff;
+}
+
+.modal-btn.primary:hover {
+  background: #3a7bc8;
+}
+
+.modal-btn.danger {
+  background: none;
+  color: #d94a4a;
+  text-decoration: underline;
+  padding: 8px;
+}
+
+/* Invoice Save Section */
+.invoice-save {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  margin-bottom: 16px;
+}
+
+.invoice-save h3 {
+  font-size: 1rem;
+  margin-bottom: 12px;
+  color: #555;
+}
+
+.invoice-input-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.invoice-input-row label {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.invoice-input-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.invoice-input-group input {
+  width: 100px;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  text-align: right;
+}
+
+.invoice-diff {
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 6px 10px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+
+.invoice-diff.diff-positive {
+  background: #fef2f2;
+}
+
+.invoice-diff.diff-negative {
+  background: #f0fdf4;
+}
+
+.invoice-comment {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  resize: vertical;
+  margin-bottom: 8px;
+}
+
+.invoice-save-btn {
+  width: 100%;
+  margin-top: 4px;
+}
+
+.invoice-save-btn.saved {
+  background: #27ae60;
+}
+
+/* Stats Page */
+.stats-empty {
+  background: #fff;
+  border-radius: 12px;
+  padding: 32px 16px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  text-align: center;
+  color: #888;
+}
+
+.stats-empty p {
+  margin-bottom: 8px;
+}
+
+.stats-section {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  margin-bottom: 16px;
+}
+
+.stats-section h2 {
+  font-size: 1rem;
+  margin-bottom: 12px;
+  color: #555;
+}
+
+/* Chart */
+.chart-container {
+  width: 100%;
+}
+
+.chart-legend {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 8px;
+  font-size: 0.75rem;
+  color: #666;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.legend-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}
+
+.legend-line {
+  display: inline-block;
+  width: 14px;
+  height: 2px;
+  background: #27ae60;
+  border-radius: 1px;
+}
+
+.chart-svg {
+  width: 100%;
+  height: auto;
+}
+
+/* Invoice History Cards */
+.invoice-history {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.invoice-card {
+  padding: 12px;
+  border: 1px solid #f0f0f0;
+  border-radius: 8px;
+}
+
+.invoice-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.invoice-card-month {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.invoice-card-amount {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #4a90d9;
+}
+
+.invoice-card-details {
+  display: flex;
+  gap: 12px;
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.invoice-card-diff {
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-top: 6px;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.invoice-card-diff.diff-positive {
+  color: #d94a4a;
+  background: #fef2f2;
+}
+
+.invoice-card-diff.diff-negative {
+  color: #27ae60;
+  background: #f0fdf4;
+}
+
+.invoice-card-comment {
+  font-size: 0.8rem;
+  color: #666;
+  font-style: italic;
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px solid #f0f0f0;
 }

@@ -1,9 +1,11 @@
-import { Config, WeeklySchedule, SelectedDays } from '../types';
+import { Config, WeeklySchedule, SelectedDays, DayOverrides, MonthInvoice } from '../types';
 
 const KEYS = {
   config: 'suivicreche_config',
   schedule: 'suivicreche_schedule',
   selectedDays: 'suivicreche_selected_days',
+  dayOverrides: 'suivicreche_day_overrides',
+  invoices: 'suivicreche_invoices',
 } as const;
 
 const DEFAULT_CONFIG: Config = { hourlyRate: 3.20 };
@@ -53,4 +55,20 @@ export function loadSelectedDays(): SelectedDays {
 
 export function saveSelectedDays(days: SelectedDays): void {
   save(KEYS.selectedDays, days);
+}
+
+export function loadDayOverrides(): DayOverrides {
+  return load(KEYS.dayOverrides, {});
+}
+
+export function saveDayOverrides(overrides: DayOverrides): void {
+  save(KEYS.dayOverrides, overrides);
+}
+
+export function loadInvoices(): MonthInvoice[] {
+  return load(KEYS.invoices, []);
+}
+
+export function saveInvoices(invoices: MonthInvoice[]): void {
+  save(KEYS.invoices, invoices);
 }
