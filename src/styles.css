@@ -493,6 +493,13 @@ body {
   background: #27ae60;
 }
 
+/* Export PDF Button */
+.export-pdf-btn {
+  width: 100%;
+  max-width: 480px;
+  margin-bottom: 16px;
+}
+
 /* Stats Page */
 .stats-empty {
   background: #fff;

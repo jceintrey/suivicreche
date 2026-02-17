@@ -3,6 +3,7 @@ import { MonthCalendar } from '../components/MonthCalendar';
 import { MonthSummary } from '../components/MonthSummary';
 import { DayDetailModal } from '../components/DayDetailModal';
 import { calculateMonth } from '../logic/calculation';
+import { exportMonthPdf } from '../logic/exportPdf';
 import {
   loadConfig,
   loadSchedule,
@@ -203,6 +204,13 @@ export function DashboardPage() {
           {saved ? 'Sauvegarde !' : 'Sauvegarder'}
         </button>
       </div>
+
+      <button
+        className="modal-btn primary export-pdf-btn"
+        onClick={() => exportMonthPdf(year, month, selectedDays, schedule, dayOverrides, config.hourlyRate)}
+      >
+        Exporter PDF
+      </button>
 
       {editingDay && (
         <DayDetailModal
