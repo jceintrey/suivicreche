@@ -59,6 +59,7 @@ export function exportMonthPdf(
   schedule: WeeklySchedule,
   dayOverrides: DayOverrides,
   hourlyRate: number,
+  printAfter = true,
 ) {
   const rows = buildRows(year, month, selectedDays, schedule, dayOverrides);
   const totalHours = Math.round(rows.reduce((s, r) => s + r.hours, 0) * 100) / 100;
@@ -146,6 +147,9 @@ export function exportMonthPdf(
   if (!win) return;
   win.document.write(html);
   win.document.close();
-  win.addEventListener('afterprint', () => win.close());
-  setTimeout(() => win.print(), 300);
+
+  if (printAfter) {
+    win.addEventListener('afterprint', () => win.close());
+    setTimeout(() => win.print(), 300);
+  }
 }

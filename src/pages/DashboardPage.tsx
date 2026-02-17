@@ -205,12 +205,20 @@ export function DashboardPage() {
         </button>
       </div>
 
-      <button
-        className="modal-btn primary export-pdf-btn"
-        onClick={() => exportMonthPdf(year, month, selectedDays, schedule, dayOverrides, config.hourlyRate)}
-      >
-        Exporter PDF
-      </button>
+      <div className="export-buttons">
+        <button
+          className="modal-btn primary export-pdf-btn"
+          onClick={() => exportMonthPdf(year, month, selectedDays, schedule, dayOverrides, config.hourlyRate, false)}
+        >
+          Afficher
+        </button>
+        <button
+          className="modal-btn primary export-pdf-btn"
+          onClick={() => exportMonthPdf(year, month, selectedDays, schedule, dayOverrides, config.hourlyRate)}
+        >
+          Exporter PDF
+        </button>
+      </div>
 
       {editingDay && (
         <DayDetailModal
