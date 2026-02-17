@@ -15,7 +15,11 @@
       "Bash(npm install:*)",
       "Bash(bash -ic \"which node; which npm; node --version\")",
       "Bash(wsl.exe -d Debian -- bash -lc:*)",
-      "Bash(wsl.exe:*)"
+      "Bash(wsl.exe:*)",
+      "Bash(tree:*)",
+      "Bash(find:*)",
+      "Bash(grep:*)",
+      "Bash(cd:*)"
     ]
   }
 }
